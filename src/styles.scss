@@ -1,4 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Declare CSS Variables
+@import "styles/config/variables";
+// Import base styles
+@import "styles/base/base";
+// Styles for layout
+@import "styles/layout/header";
+// Style for components
+@import "styles/components/material/toolbar";
+// Styles for modules
+@import "styles/pages/employees";
