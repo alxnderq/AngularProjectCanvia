@@ -1,4 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Select} from '../../../../@common/models/select';
+
+export const GENDER = [
+  {
+    id: 1,
+    description: 'Male'
+  },
+  {
+    id: 2,
+    description: 'Female'
+  }
+];
 
 @Component({
   selector: 'app-users-create',
@@ -7,7 +19,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersCreateComponent implements OnInit {
 
-  constructor() { }
+  listGender: Array<Select> = GENDER;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

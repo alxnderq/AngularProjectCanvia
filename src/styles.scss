@@ -4,8 +4,10 @@
 @import "styles/base/base";
 // Styles for layout
 @import "styles/layout/header";
+@import "styles/layout/sections";
 // Style for components
 @import "styles/components/material/toolbar";
+@import "styles/components/forms";
 @import "styles/components/images";
 // Styles for modules
 @import "styles/pages/employees";

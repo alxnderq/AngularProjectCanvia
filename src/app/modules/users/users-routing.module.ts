@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from './components/layout/layout.component';
-import {UsersListComponent} from './components/users-list/users-list.component';
-import {UsersDetailsComponent} from './components/users-details/users-details.component';
+import {UsersCreateComponent} from './components/users-create/users-create.component';
 
 const routes: Routes = [
   {
@@ -11,11 +10,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: UsersListComponent
+        redirectTo: 'create',
+        pathMatch: 'full'
       },
       {
-        path: ':id',
-        component: UsersDetailsComponent
+        path: 'create',
+        component: UsersCreateComponent
       }
     ]
   }
