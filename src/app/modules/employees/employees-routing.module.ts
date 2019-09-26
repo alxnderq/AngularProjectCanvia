@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from './components/layout/layout.component';
 import {EmployeeHomeComponent} from './components/employee-home/employee-home.component';
+import {EmployeeDetailsComponent} from './components/employee-details/employee-details.component';
 
 const routes: Routes = [
   {
@@ -10,12 +11,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'list',
-        pathMatch: 'full'
+        component: EmployeeHomeComponent
       },
       {
-        path: 'list',
-        component: EmployeeHomeComponent
+        path: ':id',
+        component: EmployeeDetailsComponent
       }
     ]
   }

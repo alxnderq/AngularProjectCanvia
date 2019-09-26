@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-employee-home',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeHomeComponent implements OnInit {
 
-  constructor() { }
+  filter: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  applyFilter($event: string) {
+    this.filter = $event;
   }
 
 }

@@ -1,3 +1,8 @@
-<p>
-  employee-list-item works!
-</p>
+<mat-list-item>
+  <img matListAvatar src="{{employee.profileImage}}"
+       class="item__image--profile"
+       alt="Employee profile image">
+  <h4 matLine><strong>{{employee.name}}</strong></h4>
+  <p matLine>{{employee.job}}</p>
+</mat-list-item>
+<mat-divider></mat-divider>

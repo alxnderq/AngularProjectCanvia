@@ -1,4 +1,6 @@
 <mat-form-field appearance="outline" floatLabel="never" class="full-width">
-  <input type="text" matInput/>
+  <label>
+    <input type="text" matInput [(ngModel)]="textFilter" (keyup)="onKeyupFilter()"/>
+  </label>
   <mat-icon color="primary" matSuffix>search</mat-icon>
 </mat-form-field>

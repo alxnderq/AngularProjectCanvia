@@ -1,0 +1,36 @@
+<div class="header--sticky">
+  <app-header-bar-back title="Employee"></app-header-bar-back>
+</div>
+<div class="employee__container">
+  <div class="employee-details__container" *ngIf="!loading">
+    <div class="employee-details-header">
+      <div class="employee-details-header__item employee-details-header__image">
+        <img src="{{employee.profileImage}}"
+             class="item__image--profile"
+             alt="Employee profile image">
+      </div>
+      <div class="employee-details-header__item employee-details-header__title">
+        <h3><strong>{{employee.name}}</strong></h3>
+        <p>{{employee.job}}</p>
+      </div>
+    </div>
+    <div class="employee-details-body">
+      <div class="employee-details-body__item">
+        <strong>Call Office</strong>
+        <span>{{employee.workPhone}}</span>
+      </div>
+      <div class="employee-details-body__item">
+        <strong>Call Mobile</strong>
+        <span>{{employee.mobilePhone}}</span>
+      </div>
+      <div class="employee-details-body__item">
+        <strong>SMS</strong>
+        <span>{{employee.mobilePhone}}</span>
+      </div>
+      <div class="employee-details-body__item">
+        <strong>Email</strong>
+        <span>{{employee.email}}</span>
+      </div>
+    </div>
+  </div>
+</div>

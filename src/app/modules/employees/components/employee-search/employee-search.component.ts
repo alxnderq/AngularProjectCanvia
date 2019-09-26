@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-employee-search',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeSearchComponent implements OnInit {
 
-  constructor() { }
+  @Output() applyFilter: EventEmitter<string> = new EventEmitter<string>();
+
+  textFilter: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  onKeyupFilter() {
+    this.applyFilter.emit(this.textFilter);
   }
 
 }

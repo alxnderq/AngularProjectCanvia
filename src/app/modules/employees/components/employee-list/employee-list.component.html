@@ -1,3 +1,6 @@
-<p>
-  employee-list works!
-</p>
+<mat-nav-list>
+  <a *ngFor="let employee of employees"
+     routerLink="{{employee.id}}">
+    <app-employee-list-item [employee]="employee"></app-employee-list-item>
+  </a>
+</mat-nav-list>

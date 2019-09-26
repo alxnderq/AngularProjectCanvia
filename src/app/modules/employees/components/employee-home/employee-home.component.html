@@ -3,6 +3,9 @@
 </div>
 <div class="employee__container">
   <div class="employee__search">
-    <app-employee-search></app-employee-search>
+    <app-employee-search (applyFilter)="applyFilter($event)"></app-employee-search>
+  </div>
+  <div class="employee__list">
+    <app-employee-list [filter]="filter"></app-employee-list>
   </div>
 </div>

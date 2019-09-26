@@ -3,3 +3,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.toolbar__button--left {
+  position: absolute !important;
+  left: 0;
+}

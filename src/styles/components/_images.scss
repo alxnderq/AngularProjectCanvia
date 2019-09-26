@@ -1,0 +1,8 @@
+.item__image--profile {
+  --item__image--profile-width: 100px;
+  --item__image--profile-height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  height: var(--item__image--profile-height);
+  width: var(--item__image--profile-width);
+}
