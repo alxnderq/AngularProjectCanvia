@@ -1,5 +1,7 @@
 // Declare CSS Variables
 @import "styles/config/variables";
+//Mixins
+@import 'styles/mixins/responsive';
 // Import base styles
 @import "styles/base/base";
 // Styles for layout

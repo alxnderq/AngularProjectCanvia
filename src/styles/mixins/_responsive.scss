@@ -1,0 +1,27 @@
+$view_mobile: 576px;
+$view-tablet: 768px;
+$view-desktop: 992px;
+$view-xl: 1200px;
+
+@mixin min-width($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (min-width: "#{$view_mobile}") {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media (min-width: "#{$view-tablet}") {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: "#{$view-desktop}") {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: "#{$view-xl}") {
+      @content;
+    }
+  }
+}

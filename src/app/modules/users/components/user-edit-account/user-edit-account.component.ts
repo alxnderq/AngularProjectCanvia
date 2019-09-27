@@ -1,15 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-user-edit-account',
   templateUrl: './user-edit-account.component.html',
   styleUrls: ['./user-edit-account.component.scss']
 })
-export class UserEditAccountComponent implements OnInit {
+export class UserEditAccountComponent implements OnInit, OnChanges {
 
   formGroup: FormGroup;
   passwordGroup: FormGroup;
+
+  @Input() user: User;
 
   constructor(
     private formBuilder: FormBuilder
@@ -18,6 +21,10 @@ export class UserEditAccountComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.renderData();
   }
 
   initForm() {
@@ -59,8 +66,18 @@ export class UserEditAccountComponent implements OnInit {
     return formGroup.controls[controlName].hasError(errorName);
   }
 
+  renderData() {
+    if (this.user && this.formGroup) {
+      Object.keys(this.user).forEach(key => {
+        if (this.formGroup.get(key)) {
+          this.formGroup.get(key).setValue(this.user[key]);
+        }
+      });
+    }
+  }
+
   onSubmit(value: any) {
-    console.log(value);
+    alert(value);
   }
 
 }

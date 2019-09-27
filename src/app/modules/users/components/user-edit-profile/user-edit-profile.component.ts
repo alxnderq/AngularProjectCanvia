@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {CountriesService} from '../../../../@common/services/countries.service';
 import {PhoneValidator} from '../../../../@common/validators/phone.validator';
+import {User} from '../../models/user';
 
 
 @Component({
@@ -10,12 +11,14 @@ import {PhoneValidator} from '../../../../@common/validators/phone.validator';
   templateUrl: './user-edit-profile.component.html',
   styleUrls: ['./user-edit-profile.component.scss']
 })
-export class UserEditProfileComponent implements OnInit {
+export class UserEditProfileComponent implements OnInit, OnChanges {
 
   listGender: Array<string> = ['Male', 'Female'];
   listCountries: Array<any>;
 
   formGroup: FormGroup;
+
+  @Input() user: User;
 
   private subscription: Subscription = new Subscription();
 
@@ -28,6 +31,10 @@ export class UserEditProfileComponent implements OnInit {
   ngOnInit() {
     this.getListCountries();
     this.initForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.renderData();
   }
 
   initForm() {
@@ -57,12 +64,22 @@ export class UserEditProfileComponent implements OnInit {
     this.subscription.add(sub);
   }
 
+  renderData() {
+    if (this.user && this.formGroup) {
+      Object.keys(this.user).forEach(key => {
+        if (this.formGroup.get(key)) {
+          this.formGroup.get(key).setValue(this.user[key]);
+        }
+      });
+    }
+  }
+
   hasError(controlName: string, errorName: string): boolean {
     return this.formGroup.controls[controlName].hasError(errorName);
   }
 
   onSubmit(value: any) {
-    console.log(value);
+    alert(value);
   }
 
 }

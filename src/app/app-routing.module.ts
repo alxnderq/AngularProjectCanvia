@@ -4,8 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'employees',
-    pathMatch: 'full'
+    loadChildren: './modules/home/home.module#HomeModule'
   },
   {
     path: 'employees',
