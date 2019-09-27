@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  justify-content: center;
 
   @include min-width(tablet) {
     flex-direction: row;
@@ -17,7 +18,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   width: 100%;
   padding: 30px;
 

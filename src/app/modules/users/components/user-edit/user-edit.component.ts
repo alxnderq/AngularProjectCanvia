@@ -13,6 +13,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
 
   user: User;
+  loading: boolean;
 
   constructor(
     private userService: UserService
@@ -24,13 +25,15 @@ export class UserEditComponent implements OnInit, OnDestroy {
   }
 
   getUser() {
+    this.loading = true;
     const sub = this.userService.getUser()
       .subscribe(result => {
         this.user = result;
       }, error => {
         console.log(error);
+        this.loading = false;
       }, () => {
-        console.log('complete');
+        this.loading = false;
       });
     this.subscription.add(sub);
   }

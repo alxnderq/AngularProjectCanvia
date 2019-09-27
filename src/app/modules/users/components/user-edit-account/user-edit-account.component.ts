@@ -20,41 +20,43 @@ export class UserEditAccountComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.initForm();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.initForm();
     this.renderData();
   }
 
   initForm() {
-    this.passwordGroup = this.formBuilder.group({
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-      ]),
-      confirmPassword: new FormControl('', [
-        Validators.required
-      ])
-    }, {
-      validator: MustMatch('password', 'confirmPassword')
-    });
+    if (!this.formGroup) {
+      this.passwordGroup = this.formBuilder.group({
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+        ]),
+        confirmPassword: new FormControl('', [
+          Validators.required
+        ])
+      }, {
+        validator: MustMatch('password', 'confirmPassword')
+      });
 
-    this.formGroup = this.formBuilder.group({
-      username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(25),
-        Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
-      ]),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.email
-      ]),
-      passwords: this.passwordGroup,
-      terms: new FormControl(false, Validators.pattern('true'))
-    });
+      this.formGroup = this.formBuilder.group({
+        username: new FormControl('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(25),
+          Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+        ]),
+        email: new FormControl('', [
+          Validators.required,
+          Validators.email
+        ]),
+        passwords: this.passwordGroup,
+        terms: new FormControl(false, Validators.pattern('true'))
+      });
+    }
   }
 
   hasError(controlName: string, errorName: string): boolean {

@@ -30,27 +30,29 @@ export class UserEditProfileComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.getListCountries();
-    this.initForm();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.initForm();
     this.renderData();
   }
 
   initForm() {
-    const countryForm: FormControl = new FormControl('', [Validators.required]);
+    if (!this.formGroup) {
+      const countryForm: FormControl = new FormControl('', [Validators.required]);
 
-    this.formGroup = this.formBuilder.group({
-      fullName: new FormControl('', [Validators.required]),
-      birthday: new FormControl('', [Validators.required]),
-      gender: new FormControl('', [Validators.required]),
-      country: countryForm,
-      phone: new FormControl('', Validators.compose([
-        Validators.required,
-        PhoneValidator.validCountryPhone(countryForm)
-      ])),
-      bio: new FormControl('', [Validators.maxLength(256)])
-    });
+      this.formGroup = this.formBuilder.group({
+        fullName: new FormControl('', [Validators.required]),
+        birthday: new FormControl('', [Validators.required]),
+        gender: new FormControl('', [Validators.required]),
+        country: countryForm,
+        phone: new FormControl('', Validators.compose([
+          Validators.required,
+          PhoneValidator.validCountryPhone(countryForm)
+        ])),
+        bio: new FormControl('', [Validators.maxLength(256)])
+      });
+    }
   }
 
   getListCountries() {
