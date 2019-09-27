@@ -1,0 +1,104 @@
+<div class="form-container">
+  <form [formGroup]="formGroup"
+        autocomplete="off"
+        novalidate
+        (ngSubmit)="onSubmit(formGroup.value)">
+    <mat-form-field>
+      <label>
+        <input type="text"
+               matInput
+               placeholder="Full Name"
+               formControlName="fullName"
+               required/>
+      </label>
+      <mat-error *ngIf="hasError('fullName', 'required')">
+        Full Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input matInput
+               [matDatepicker]="picker"
+               placeholder="Your birthday"
+               formControlName="birthday"
+               readonly
+               (click)="picker.open()"
+               required>
+      </label>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
+      <mat-error *ngIf="hasError('birthday', 'required')">
+        Birthday is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Gender"
+                  formControlName="gender"
+                  required>
+        <mat-option *ngFor="let item of listGender"
+                    [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="hasError('gender', 'required')">
+        Gender is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Country"
+                  formControlName="country"
+                  required>
+        <mat-option *ngFor="let item of listCountries"
+                    [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="hasError('country', 'required')">
+        Country is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input type="tel"
+               matInput
+               placeholder="Phone"
+               formControlName="phone"
+               required/>
+      </label>
+      <mat-hint align="start"><strong>Mobile:</strong></mat-hint>
+      <mat-hint align="end"><strong>Fixed:</strong></mat-hint>
+      <mat-error *ngIf="hasError('phone', 'required')">
+        Phone is required
+      </mat-error>
+      <mat-error *ngIf="hasError('phone', 'validCountryPhone')">
+        Phone incorrect for the country selected
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+          <textarea #bio
+                    matInput
+                    placeholder="Bio"
+                    formControlName="bio"></textarea>
+      </label>
+      <mat-hint align="start">Tell us about yourself</mat-hint>
+      <mat-hint align="end">{{bio.value.length}} / 256</mat-hint>
+      <mat-error *ngIf="hasError('bio', 'maxlength')">
+        You have more than 256 characters
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button
+            color="primary"
+            style="margin-top: 20px;"
+            [disabled]="!formGroup.valid">
+      Submit
+    </button>
+  </form>
+
+</div>

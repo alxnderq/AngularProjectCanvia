@@ -1,0 +1,15 @@
+<div class="header--sticky">
+  <app-header-bar title="List of Users"></app-header-bar>
+</div>
+<div class="container users-list__container">
+  <mat-nav-list>
+    <a *ngFor="let user of users"
+       routerLink="{{user.id}}">
+      <mat-list-item>
+        <h4 matLine><strong>{{user.fullName}}</strong></h4>
+        <p matLine>{{user.gender}}</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </a>
+  </mat-nav-list>
+</div>

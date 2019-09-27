@@ -1,0 +1,17 @@
+<div class="header--sticky">
+  <app-header-bar-back title="Edit user"></app-header-bar-back>
+</div>
+<div class="container">
+  <mat-tab-group mat-stretch-tabs class="full-width" animationDuration="0ms">
+    <mat-tab label="User details">
+      <ng-template matTabContent>
+        <app-user-edit-profile></app-user-edit-profile>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Account details">
+      <ng-template matTabContent>
+        <app-user-edit-account></app-user-edit-account>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

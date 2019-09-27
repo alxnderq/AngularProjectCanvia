@@ -1,0 +1,97 @@
+<div class="form-container">
+  <form [formGroup]="formGroup"
+        autocomplete="off"
+        novalidate
+        (ngSubmit)="onSubmit(formGroup.value)">
+    <mat-form-field>
+      <label>
+        <input type="text"
+               matInput
+               placeholder="Username"
+               formControlName="username"
+               required/>
+      </label>
+      <mat-error *ngIf="hasError('username', 'required')">
+        Username is required
+      </mat-error>
+      <mat-error *ngIf="hasError('username', 'minlength')">
+        Username at least 5 characters long
+      </mat-error>
+      <mat-error *ngIf="hasError('username', 'maxlength')">
+        Username can't be more than 25 characters long
+      </mat-error>
+      <mat-error *ngIf="hasError('username', 'pattern')">
+        Username must contain only numbers and letters
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input type="email"
+               matInput
+               placeholder="Email"
+               formControlName="email"
+               required/>
+      </label>
+      <mat-error *ngIf="hasError('email', 'required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="hasError('email', 'email')">
+        Not a valid email
+      </mat-error>
+    </mat-form-field>
+
+    <div formGroupName="passwords">
+      <mat-form-field>
+        <label>
+          <input type="password"
+                 matInput
+                 placeholder="Password"
+                 formControlName="password"
+                 required/>
+        </label>
+        <mat-hint>Choose a password of at least five characters, one uppercase letter and one number</mat-hint>
+        <mat-error *ngIf="hasErrorGroup('passwords', 'password', 'required')">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="hasErrorGroup('passwords', 'password', 'minlength')">
+          Password must be at least 5 characters long
+        </mat-error>
+        <mat-error *ngIf="hasErrorGroup('passwords', 'password', 'pattern')">
+          Your password must contain at least one uppercase, one lowercase and one number
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input type="password"
+                 matInput
+                 placeholder="Confirm Password"
+                 formControlName="confirmPassword"
+                 required/>
+        </label>
+        <mat-error *ngIf="hasErrorGroup('passwords', 'confirmPassword', 'required')">
+          Confirm Password is required
+        </mat-error>
+        <mat-error *ngIf="hasErrorGroup('passwords', 'confirmPassword', 'mustMatch')">
+          Password must match
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-checkbox formControlName="terms">
+      I accept terms and conditions
+    </mat-checkbox>
+    <mat-error class="error-message" *ngIf="hasError('terms', 'pattern')">
+      You must accept terms
+    </mat-error>
+
+    <button mat-raised-button
+            color="primary"
+            style="margin-top: 20px;"
+            [disabled]="!formGroup.valid">
+      Submit
+    </button>
+  </form>
+
+</div>
