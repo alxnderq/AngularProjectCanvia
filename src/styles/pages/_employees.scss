@@ -1,9 +1,42 @@
 .employee__container {
   flex-direction: column;
+  padding: 30px;
 }
+
+.employee-details-header {
+  display: flex;
+  padding: 20px;
+
+  & > &__item {
+    padding: 5px;
+  }
+}
+
+.employee-details-header__title {
+  flex: 2;
+}
+
 
 .employee-details__container {
   border: 1px solid gray;
   border-radius: 4px;
-  padding: 10px;
+}
+
+.employee-details-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-details-body__item {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  border-top: 1px solid gray;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.employee-details-body__item--text {
+  display: flex;
+  flex-direction: column;
 }

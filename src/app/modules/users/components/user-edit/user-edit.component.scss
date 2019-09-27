@@ -5,8 +5,10 @@
   flex-direction: column;
   width: 100%;
 
-  @include min-width(desktop) {
+  @include min-width(tablet) {
     flex-direction: row;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
 }
@@ -17,8 +19,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 30px;
 
-  @include min-width(desktop) {
+  @include min-width(tablet) {
     width: 30%;
     flex-direction: column;
   }
@@ -33,7 +36,7 @@
 
 .user-form__tabs {
   width: 100%;
-  @include min-width(desktop) {
+  @include min-width(tablet) {
     width: 70%;
   }
 }
