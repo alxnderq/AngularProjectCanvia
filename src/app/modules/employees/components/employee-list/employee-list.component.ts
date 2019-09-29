@@ -57,8 +57,10 @@ export class EmployeeListComponent implements OnInit, AfterViewInit, OnChanges, 
 
   filterList() {
     if (this.data) {
+      const filter = this.filter.toLowerCase();
       const list = [...this.data].filter(item => {
-        return item.name.includes(this.filter) || item.job.includes(this.filter);
+        return item.name.toLowerCase().includes(filter)
+          || item.job.toLowerCase().includes(filter);
       });
       this.employees = [...list];
     }
